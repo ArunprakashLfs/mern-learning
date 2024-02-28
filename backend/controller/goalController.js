@@ -1,27 +1,31 @@
 //@desc getGoals
 //route GET/api/goals
 //@access private
-const getGoals = (req, res) => {
+const getGoals = async (req, res) => {
   res.status(200).json({ message: "get Goals" });
 };
 //@desc setGoals
 //route SET/api/goals
 //@access private
-const setGoals = (req, res) => {
+const setGoals = async (req, res) => {
+  if (!req.body.table) {
+    res.status(400);
+    throw new Error("please add the text field");
+  }
   res.status(200).json({ message: "setGoals" });
 };
 
 //@desc updateGoals
-//route PUT/api/goals
+//route PUT/api/goals/:id
 //@access private
-const updateGoals = (req, res) => {
+const updateGoals = async (req, res) => {
   res.status(200).json({ message: `Update Goals ${req.params.id}` });
 };
 
 //@desc deleteGoals
-//route DELETE/api/goals
+//route DELETE/api/goals/:id
 //@access private
-const deleteGoals = (req, res) => {
+const deleteGoals = async (req, res) => {
   res.status(200).json({ message: `delete Goals ${req.params.id}` });
 };
 
